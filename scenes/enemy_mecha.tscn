@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://sprites/enemy_body.png" type="Texture" id=1]
+[ext_resource path="res://sprites/tank_feets-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://scripts/enemy_mecha.gd" type="Script" id=3]
+[ext_resource path="res://sprites/explosion-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://sprites/enemy_laser.png" type="Texture" id=5]
+[ext_resource path="res://sprites/enemy_gun.png" type="Texture" id=6]
+[ext_resource path="res://sprites/static_cannon_top.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 7.87115
+height = 12.4439
+
+[sub_resource type="Animation" id=5]
+resource_name = "event"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("explosion_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("explosion_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "event"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("guns_sprites:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -3, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="enemy_mecha" type="KinematicBody2D"]
+script = ExtResource( 3 )
+vel = 30
+
+[node name="feet_walking" type="AnimatedSprite" parent="."]
+rotation = 1.5708
+frames = SubResource( 3 )
+playing = true
+
+[node name="feet" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 1 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 0 )
+shape = SubResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/event = SubResource( 5 )
+
+[node name="muzzle_l" type="Position2D" parent="."]
+position = Vector2( 20, 0 )
+
+[node name="timer_left" type="Timer" parent="."]
+one_shot = true
+
+[node name="guns_sprites" type="Node2D" parent="."]
+
+[node name="laser" type="Sprite" parent="guns_sprites"]
+visible = false
+rotation = -1.57079
+scale = Vector2( 1, -1 )
+texture = ExtResource( 5 )
+
+[node name="gun" type="Sprite" parent="guns_sprites"]
+visible = false
+rotation = -1.57079
+scale = Vector2( 1, -1 )
+texture = ExtResource( 6 )
+
+[node name="missile" type="Sprite" parent="guns_sprites"]
+visible = false
+rotation = 1.5708
+scale = Vector2( 1, -1 )
+texture = ExtResource( 7 )
+
+[node name="explosion_sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+hframes = 3
+
+[node name="shoot_anim" type="AnimationPlayer" parent="."]
+anims/event = SubResource( 6 )
+
+[connection signal="timeout" from="timer_left" to="." method="_on_timer_left_timeout"]
