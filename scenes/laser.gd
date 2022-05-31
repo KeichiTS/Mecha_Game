@@ -1,11 +1,11 @@
 extends Area2D
 
-var multiplier = PLAYER.bullet_multiplier
+var multiplier = PLAYER.laser_multiplier
 
 export var vel = 400
 var dir = Vector2()
 export var max_distance = 300
-var damage = 10 * multiplier
+var damage = 15 * multiplier
 onready var initipos = self.global_position
 
 func _ready():

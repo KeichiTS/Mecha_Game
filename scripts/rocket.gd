@@ -1,9 +1,11 @@
 extends Area2D
 
+var multiplier = PLAYER.rocket_multiplier
+
 export var vel = 400
 var dir = Vector2()
 export var max_distance = 300
-var damage = 50
+var damage = 50 * multiplier
 
 onready var initipos = self.global_position
 

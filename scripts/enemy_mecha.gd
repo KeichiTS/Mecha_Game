@@ -38,9 +38,10 @@ func move(delta):
 		var angle = get_angle_to(target.global_position)
 		if abs(angle) > .03 :
 			rotation += rot_vel * delta * sign(angle)
-		if (target.global_position - global_position).length() < 200:
+		if (target.global_position - global_position).length() < 1000:
 			move_status = true
-			translate(Vector2(cos(rotation), sin(rotation)).normalized() * vel * delta)
+			move_and_slide(Vector2(cos(rotation), sin(rotation)).normalized() * vel )
+			#translate(Vector2(cos(rotation), sin(rotation)).normalized() * vel * delta)
 		
 		else:
 			move_status = false

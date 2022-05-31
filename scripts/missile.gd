@@ -15,10 +15,14 @@ func _process(delta):
 		translate(Vector2(cos(rotation), sin(rotation)).normalized() * vel * delta)
 
 
-
-
-func _on_missile_body_entered(body):
-	if body.name == "Player":
+func explode():
 		$anim.play("event")
 		yield($anim, "animation_finished")
 		queue_free()
+
+func _on_missile_body_entered(body):
+	if body.name == "Player":
+		explode()
+
+func _on_explode_time_timeout():
+	explode()

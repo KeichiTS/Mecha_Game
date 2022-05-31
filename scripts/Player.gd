@@ -4,6 +4,7 @@ extends KinematicBody2D
 
 const ROT_VEL = PI
 
+var life = 100
 
 var max_speed = 80
 var speed = 100
@@ -21,12 +22,28 @@ var left_gun_ready = true
 var right_gun = bullet
 var right_gun_ready = true
 
+enum { auto_shoot, manual }
+var left_mode = auto_shoot
+var right_mode = auto_shoot
+
 var left_muzzle
 var right_muzzle
 
 var gun_change = false
 
 func _ready():
+	life += PLAYER.life_addiction
+	
+	if PLAYER.auto_left == false:
+		left_mode = manual
+	else:
+		left_mode = auto_shoot
+
+	if PLAYER.auto_right == false:
+		right_mode = manual
+	else:
+		right_mode = auto_shoot
+		
 	guns_choose()
 
 
@@ -67,40 +84,42 @@ func move(val):
 
 
 func shoot_left():
-	if Input.is_action_just_pressed("shoot_l") and left_gun_ready == true:
-		var ammo
-		if left_gun == laser:
-			ammo = pre_laser.instance()
-		elif left_gun == bullet:
-			ammo = pre_bullet.instance()
-		elif left_gun == rocket:
-			ammo = pre_rocket.instance()
-		
-		ammo.global_position = left_muzzle.global_position
-		ammo.global_rotation = global_rotation
-		ammo.dir = - Vector2(cos(global_rotation),sin(global_rotation)).normalized()
-		get_parent().add_child(ammo)
-		left_gun_ready = false
-		$shoot_anim_left.play("event")
-		$timer_left.start()
+	if left_gun_ready == true:
+		if (Input.is_action_just_pressed("shoot_l") and left_mode == manual) or left_mode == auto_shoot: 
+			var ammo
+			if left_gun == laser:
+				ammo = pre_laser.instance()
+			elif left_gun == bullet:
+				ammo = pre_bullet.instance()
+			elif left_gun == rocket:
+				ammo = pre_rocket.instance()
+			
+			ammo.global_position = left_muzzle.global_position
+			ammo.global_rotation = global_rotation
+			ammo.dir = - Vector2(cos(global_rotation),sin(global_rotation)).normalized()
+			get_parent().add_child(ammo)
+			left_gun_ready = false
+			$shoot_anim_left.play("event")
+			$timer_left.start()
 
 func shoot_right():
-	if Input.is_action_just_pressed("shoot_r") and right_gun_ready == true:
-		var ammo
-		if right_gun == laser:
-			ammo = pre_laser.instance()
-		elif right_gun == bullet:
-			ammo = pre_bullet.instance()
-		elif right_gun == rocket:
-			ammo = pre_rocket.instance()
-		
-		ammo.global_position = right_muzzle.global_position
-		ammo.global_rotation = global_rotation
-		ammo.dir = - Vector2(cos(global_rotation),sin(global_rotation)).normalized()
-		get_parent().add_child(ammo)
-		right_gun_ready = false
-		$shoot_anim_right.play("event")
-		$timer_right.start()
+	if right_gun_ready == true:
+		if (Input.is_action_just_pressed("shoot_r") and right_mode == manual) or right_mode == auto_shoot: 
+			var ammo
+			if right_gun == laser:
+				ammo = pre_laser.instance()
+			elif right_gun == bullet:
+				ammo = pre_bullet.instance()
+			elif right_gun == rocket:
+				ammo = pre_rocket.instance()
+			
+			ammo.global_position = right_muzzle.global_position
+			ammo.global_rotation = global_rotation
+			ammo.dir = - Vector2(cos(global_rotation),sin(global_rotation)).normalized()
+			get_parent().add_child(ammo)
+			right_gun_ready = false
+			$shoot_anim_right.play("event")
+			$timer_right.start()
 
 func guns_choose():
 	if left_gun == laser:
@@ -159,12 +178,16 @@ func change_gun():
 		guns_choose()
 		gun_change = false
 	
+func die():
+	if life <= 0:
+		queue_free()
 
 func _on_timer_left_timeout():
 	left_gun_ready = true
 
 func _on_timer_right_timeout():
 	right_gun_ready = true
+
 
 ##########
 
@@ -190,7 +213,7 @@ func _on_timer_right_timeout():
 ##########                                       ##
 #########                                         #
 ###################################################
-#               ~ KeichiTS - 2021 ~               #
+#               ~ KeichiTS - 2022 ~               #
 ###################################################
 
 
