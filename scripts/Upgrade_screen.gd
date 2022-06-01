@@ -16,34 +16,40 @@ func sold():
 	
 
 func _on_HP_pressed():
-	PLAYER.life_addiction += 10
-	PLAYER.money -= 50
+	if PLAYER.money >= 50:
+		PLAYER.money -= 50
+		PLAYER.life_addiction += 10
 
 
 func _on_Bullet_pressed():
-	PLAYER.bullet_multiplier += 0.2
-	PLAYER.money -= 50
+	if PLAYER.money >= 50:
+		PLAYER.bullet_multiplier += 0.2
+		PLAYER.money -= 50
 
 
 func _on_Laser_pressed():
-	PLAYER.laser_multiplier += 0.2
-	PLAYER.money -= 50 
+	if PLAYER.money >= 50:
+		PLAYER.laser_multiplier += 0.2
+		PLAYER.money -= 50 
 
 
 func _on_Cannon_pressed():
-	PLAYER.rocket_multiplier += 0.2
-	PLAYER.money -= 50
+	if PLAYER.money >= 50:
+		PLAYER.rocket_multiplier += 0.2
+		PLAYER.money -= 50
 
 
 func _on_Auto_Left_pressed():
-	PLAYER.auto_left = true
-	PLAYER.money -= 100
-	$Auto_Left.disabled = true
+	if PLAYER.money >= 100:
+		PLAYER.auto_left = true
+		PLAYER.money -= 100
+		$Auto_Left.disabled = true
 
 func _on_Auto_right_pressed():
-	PLAYER.auto_right = true
-	PLAYER.money -= 100
-	$Auto_right.disabled = true
+	if PLAYER.money >= 100:
+		PLAYER.auto_right = true
+		PLAYER.money -= 100
+		$Auto_right.disabled = true
 
 
 func _on_Start_pressed():
@@ -51,5 +57,6 @@ func _on_Start_pressed():
 
 
 func _on_Speed_pressed():
-	PLAYER.max_speed+= 5
-	PLAYER.money -= 500
+	if PLAYER.money >= 500:
+		PLAYER.max_speed+= 5
+		PLAYER.money -= 500
