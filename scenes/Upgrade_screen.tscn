@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Upgrade_screen.gd" type="Script" id=1]
+
+[node name="Upgrade_screen" type="Node"]
+script = ExtResource( 1 )
+
+[node name="HP" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 24.0
+margin_right = 161.0
+margin_bottom = 44.0
+text = "HP"
+
+[node name="Bullet" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 48.0
+margin_right = 161.0
+margin_bottom = 68.0
+text = "Bullet"
+
+[node name="Laser" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 72.0
+margin_right = 161.0
+margin_bottom = 92.0
+text = "Laser"
+
+[node name="Cannon" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 96.0
+margin_right = 161.0
+margin_bottom = 116.0
+text = "Cannon"
+
+[node name="Auto_Left" type="Button" parent="."]
+margin_left = 4.0
+margin_top = 192.0
+margin_right = 73.0
+margin_bottom = 212.0
+text = "Auto_left"
+
+[node name="Auto_right" type="Button" parent="."]
+margin_left = 176.0
+margin_top = 192.0
+margin_right = 253.0
+margin_bottom = 212.0
+text = "Auto_right"
+
+[node name="Start" type="Button" parent="."]
+margin_left = 88.0
+margin_top = 216.0
+margin_right = 165.0
+margin_bottom = 236.0
+text = "Start"
+
+[node name="Money" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Money: "
+
+[connection signal="pressed" from="HP" to="." method="_on_HP_pressed"]
+[connection signal="pressed" from="Bullet" to="." method="_on_Bullet_pressed"]
+[connection signal="pressed" from="Laser" to="." method="_on_Laser_pressed"]
+[connection signal="pressed" from="Cannon" to="." method="_on_Cannon_pressed"]
+[connection signal="pressed" from="Auto_Left" to="." method="_on_Auto_Left_pressed"]
+[connection signal="pressed" from="Auto_right" to="." method="_on_Auto_right_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]

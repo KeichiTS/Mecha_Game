@@ -29,6 +29,8 @@ func _on_bullet_body_entered(body):
 func do_damage(val):
 	if val.has_method("hp_change"):
 		val.hp_change(damage)
+	elif val.has_method("damage"):
+		val.damage(damage)
 	
 	queue_free()
 

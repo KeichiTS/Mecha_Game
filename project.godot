@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Mecha_Game"
-run/main_scene="res://scenes/test.tscn"
+run/main_scene="res://scenes/Upgrade_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -2,6 +2,7 @@ extends Area2D
 
 var rot_vel = PI
 export var vel = 60
+var damage = 50 
 onready var target = get_parent().get_node("Player")
 
 func _ready():
@@ -22,6 +23,8 @@ func explode():
 
 func _on_missile_body_entered(body):
 	if body.name == "Player":
+		if body.has_method("damage"):
+			body.damage(damage)
 		explode()
 
 func _on_explode_time_timeout():

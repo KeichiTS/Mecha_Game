@@ -8,7 +8,6 @@ var move_status = false
 var hp = 50 setget hp_change
 var initial_hp = hp
 
-
 var pre_bullet = preload("res://scenes/enemy_bullet.tscn")
 var pre_laser = preload("res://scenes/enemy_laser.tscn")
 var pre_missile = preload("res://scenes/missile.tscn")
@@ -54,6 +53,7 @@ func move(delta):
 			$feet.show()
 			$feet_walking.hide()
 
+
 func die():
 	if hp <= 0:
 		$anim.play("event")
@@ -83,7 +83,6 @@ func shoot_left():
 
 func hp_change(val):
 	hp -= val
-	
 	
 func _on_timer_left_timeout():
 	left_gun_ready = true

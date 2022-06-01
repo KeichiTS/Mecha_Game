@@ -1,10 +1,10 @@
-#A code by: KeichiTS - 09/2021
+#A code by: KeichiTS - 05/2022
 
 extends KinematicBody2D
 
 const ROT_VEL = PI
 
-var life = 100
+var life = 100 setget damage
 
 var max_speed = 80
 var speed = 100
@@ -25,6 +25,9 @@ var right_gun_ready = true
 enum { auto_shoot, manual }
 var left_mode = auto_shoot
 var right_mode = auto_shoot
+
+enum {dead,alive}
+var status = alive
 
 var left_muzzle
 var right_muzzle
@@ -48,11 +51,15 @@ func _ready():
 
 
 func _process(delta):
-	move(delta)
-	shoot_left()
-	shoot_right()
-	change_gun()
+	if status == alive:
+		move(delta)
+		shoot_left()
+		shoot_right()
+		change_gun()
 
+	die()
+	change_life()
+	
 func move(val):
 	var rot = 0 
 
@@ -180,7 +187,19 @@ func change_gun():
 	
 func die():
 	if life <= 0:
-		queue_free()
+		life = 0 
+		if status == alive:
+			status = dead
+			$dead_animation.play("event")
+			yield($dead_animation,"animation_finished")
+			get_tree().change_scene("res://scenes/Upgrade_screen.tscn")
+		
+func damage(val):
+	life -= val
+	
+func change_life():
+	$HUD/HP_Label.text = "HP: " + str(life)
+
 
 func _on_timer_left_timeout():
 	left_gun_ready = true
@@ -215,5 +234,3 @@ func _on_timer_right_timeout():
 ###################################################
 #               ~ KeichiTS - 2022 ~               #
 ###################################################
-
-
