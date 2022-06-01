@@ -33,6 +33,13 @@ margin_right = 161.0
 margin_bottom = 116.0
 text = "Cannon"
 
+[node name="Speed" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 119.0
+margin_right = 161.0
+margin_bottom = 139.0
+text = "Speed"
+
 [node name="Auto_Left" type="Button" parent="."]
 margin_left = 4.0
 margin_top = 192.0
@@ -63,6 +70,7 @@ text = "Money: "
 [connection signal="pressed" from="Bullet" to="." method="_on_Bullet_pressed"]
 [connection signal="pressed" from="Laser" to="." method="_on_Laser_pressed"]
 [connection signal="pressed" from="Cannon" to="." method="_on_Cannon_pressed"]
+[connection signal="pressed" from="Speed" to="." method="_on_Speed_pressed"]
 [connection signal="pressed" from="Auto_Left" to="." method="_on_Auto_Left_pressed"]
 [connection signal="pressed" from="Auto_right" to="." method="_on_Auto_right_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]

@@ -6,7 +6,7 @@ const ROT_VEL = PI
 
 var life = 100 setget damage
 
-var max_speed = 80
+var max_speed = PLAYER.max_speed
 var speed = 100
 var acell = 0 
 var timer_left

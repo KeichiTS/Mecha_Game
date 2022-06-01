@@ -9,6 +9,9 @@ var auto_left = false
 var auto_right = false 
 var life_addiction = 0
 
+var acceleration = 1
+var max_speed = 80
+
 
 func _ready():
 	pass
