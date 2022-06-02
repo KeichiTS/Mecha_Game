@@ -55,6 +55,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "died" ],
+"method": "emit_signal"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "event"
@@ -124,7 +138,6 @@ scale = Vector2( 1, -1 )
 texture = ExtResource( 7 )
 
 [node name="explosion_sprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 4 )
 hframes = 3
 

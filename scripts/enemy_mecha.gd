@@ -3,6 +3,7 @@ extends KinematicBody2D
 var rot_vel = PI
 export var vel = 50
 onready var target = get_parent().get_node("Player")
+
 enum {chasing , waiting}
 var move_status = false
 var hp = 50 setget hp_change
@@ -15,6 +16,7 @@ var pre_missile = preload("res://scenes/missile.tscn")
 export(int, "laser", "bullet", "missile") var left_gun = 0 
 var left_gun_ready = true
 
+signal died
 
 func _ready():
 	if left_gun == 0:

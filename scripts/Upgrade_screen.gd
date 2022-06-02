@@ -53,8 +53,8 @@ func _on_Auto_right_pressed():
 
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://scenes/test.tscn")
-
+	#get_tree().change_scene("res://scenes/test.tscn")
+	get_tree().change_scene("res://scenes/test_wave.tscn")
 
 func _on_Speed_pressed():
 	if PLAYER.money >= 500:

@@ -1,6 +1,6 @@
 extends Node
 
-var money = 10000
+var money = 1000
 
 var bullet_multiplier = 1
 var laser_multiplier = 1 

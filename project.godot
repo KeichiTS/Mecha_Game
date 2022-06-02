@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Mecha_Game"
-run/main_scene="res://scenes/Upgrade_screen.tscn"
+run/main_scene="res://scenes/Lobby.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -22,7 +22,6 @@ PLAYER="*res://scripts/AUTOLOADS/PLAYER.gd"
 
 window/size/width=256
 window/size/height=240
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

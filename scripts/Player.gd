@@ -10,6 +10,7 @@ var max_speed = PLAYER.max_speed
 var speed = 100
 var acell = 0 
 var timer_left
+var max_life
 
 
 var pre_bullet = preload("res://scenes/bullet.tscn")
@@ -36,6 +37,7 @@ var gun_change = false
 
 func _ready():
 	life += PLAYER.life_addiction
+	max_life = life
 	
 	if PLAYER.auto_left == false:
 		left_mode = manual
@@ -199,6 +201,7 @@ func damage(val):
 	
 func change_life():
 	$HUD/HP_Label.text = "HP: " + str(life)
+	$HUD/LifeBar.value = 100*life/max_life
 
 
 func _on_timer_left_timeout():
