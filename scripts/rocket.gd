@@ -27,10 +27,9 @@ func _on_hitbox_body_entered(body):
 	yield($anim,"animation_finished")
 	queue_free()
 
-
-
 func _on_rocket_body_entered(body):
 	vel = 0 
 	$anim.play("event")
-	
+	yield($anim,"animation_finished")
+	queue_free()
 

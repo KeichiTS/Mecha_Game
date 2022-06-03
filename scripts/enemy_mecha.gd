@@ -19,6 +19,8 @@ var left_gun_ready = true
 signal died
 
 func _ready():
+	
+	
 	if left_gun == 0:
 		$guns_sprites/laser.show()
 	
@@ -39,7 +41,7 @@ func move(delta):
 		var angle = get_angle_to(target.global_position)
 		if abs(angle) > .03 :
 			rotation += rot_vel * delta * sign(angle)
-		if (target.global_position - global_position).length() < 1000:
+		if (target.global_position - global_position).length() < 200:
 			move_status = true
 			move_and_slide(Vector2(cos(rotation), sin(rotation)).normalized() * vel )
 			#translate(Vector2(cos(rotation), sin(rotation)).normalized() * vel * delta)

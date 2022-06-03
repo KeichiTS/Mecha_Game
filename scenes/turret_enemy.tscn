@@ -72,7 +72,7 @@ position = Vector2( 34, 0 )
 anims/event = SubResource( 2 )
 
 [node name="timer_shoot" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [node name="anim" type="AnimationPlayer" parent="."]

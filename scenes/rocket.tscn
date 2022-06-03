@@ -63,6 +63,8 @@ tracks/3/keys = {
 radius = 4.04496
 
 [node name="rocket" type="Area2D"]
+collision_layer = 8
+collision_mask = 7
 script = ExtResource( 3 )
 vel = 150
 max_distance = 150
