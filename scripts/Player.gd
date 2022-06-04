@@ -50,9 +50,13 @@ func _ready():
 		right_mode = auto_shoot
 		
 	guns_choose()
+	
+	
 
 
 func _process(delta):
+	
+	
 	if status == alive:
 		move(delta)
 		shoot_left()

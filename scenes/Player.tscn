@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://sprites/body.png" type="Texture" id=1]
 [ext_resource path="res://sprites/gun03.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sprites/gun02.png" type="Texture" id=7]
 [ext_resource path="res://sprites/HUD.png" type="Texture" id=8]
 [ext_resource path="res://sprites/explosion-Sheet.png" type="Texture" id=9]
+[ext_resource path="res://scripts/Radar.gd" type="Script" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -240,10 +241,45 @@ bg_color = Color( 0.866667, 0.192157, 1, 1 )
 corner_detail = 2
 anti_aliasing = false
 
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.219608, 1, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "radar_pulse"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.219608, 1, 0, 0 ), Color( 0.219608, 1, 0, 0.435294 ) ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=["player"]]
-position = Vector2( 47, -29 )
 collision_mask = 30
 script = ExtResource( 5 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="feets" type="AnimatedSprite" parent="."]
 rotation = -1.5708
@@ -368,6 +404,29 @@ margin_bottom = 223.0
 text = "HP: "
 valign = 1
 
+[node name="Radar" type="Node2D" parent="HUD"]
+position = Vector2( 9, 189 )
+script = ExtResource( 10 )
+radius = 42.0
+sensor_radius = 200.0
+color = Color( 0.521569, 0, 0.623529, 0.431373 )
+Mecha_Color = Color( 5.8125, 6, 0, 0.5 )
+enemy_Color = Color( 1, 0, 0, 0.501961 )
+
+[node name="Timer" type="Timer" parent="HUD/Radar"]
+wait_time = 0.3
+autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Radar"]
+margin_right = 42.0
+margin_bottom = 42.0
+color = Color( 0.219608, 1, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Radar"]
+autoplay = "radar_pulse"
+anims/RESET = SubResource( 11 )
+anims/radar_pulse = SubResource( 12 )
+
 [node name="explosions" type="Node2D" parent="."]
 
 [node name="explosion1" type="Sprite" parent="explosions"]
@@ -404,3 +463,4 @@ hframes = 3
 
 [connection signal="timeout" from="timer_left" to="." method="_on_timer_left_timeout"]
 [connection signal="timeout" from="timer_right" to="." method="_on_timer_right_timeout"]
+[connection signal="timeout" from="HUD/Radar/Timer" to="HUD/Radar" method="_on_Timer_timeout"]

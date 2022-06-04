@@ -52,7 +52,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[node name="turret_enemy" type="StaticBody2D"]
+[node name="turret_enemy" type="StaticBody2D" groups=["radar"]]
 script = ExtResource( 1 )
 
 [node name="base" type="Sprite" parent="."]

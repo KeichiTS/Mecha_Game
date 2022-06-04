@@ -24,6 +24,7 @@ tile_data = PoolIntArray( -458751, 0, 0, -458750, 1, 0, -458749, 1, 0, -458748, 
 position = Vector2( 190.488, 93.6567 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="HUD" type="Sprite" parent="CanvasLayer"]
 visible = false
@@ -45,4 +46,53 @@ position = Vector2( -80, -64 )
 
 [node name="Stone" parent="." instance=ExtResource( 8 )]
 
+[node name="PW" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PowerUp" type="Popup" parent="PW"]
+pause_mode = 2
+visible = true
+margin_right = 239.0
+margin_bottom = 162.0
+popup_exclusive = true
+
+[node name="ColorRect" type="ColorRect" parent="PW/PowerUp"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PW/PowerUp/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PW/PowerUp/ColorRect/CenterContainer"]
+margin_left = 82.0
+margin_top = 62.0
+margin_right = 157.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="PW/PowerUp/ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 75.0
+margin_bottom = 14.0
+text = "Choose one"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PW/PowerUp/ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 75.0
+margin_bottom = 38.0
+alignment = 1
+
+[node name="Pw1" type="Button" parent="PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 23.0
+margin_right = 35.0
+margin_bottom = 20.0
+
+[node name="Pw2" type="Button" parent="PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 39.0
+margin_right = 51.0
+margin_bottom = 20.0
+
+[connection signal="wave" from="." to="." method="_on_test_wave"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Pw1" to="." method="_on_Pw1_pressed"]
+[connection signal="pressed" from="PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Pw2" to="." method="_on_Pw2_pressed"]
