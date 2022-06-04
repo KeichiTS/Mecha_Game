@@ -404,6 +404,14 @@ margin_bottom = 223.0
 text = "HP: "
 valign = 1
 
+[node name="Enemies" type="Label" parent="HUD"]
+margin_left = 201.0
+margin_top = 196.0
+margin_right = 247.0
+margin_bottom = 216.0
+text = "Left: "
+valign = 1
+
 [node name="Radar" type="Node2D" parent="HUD"]
 position = Vector2( 9, 189 )
 script = ExtResource( 10 )

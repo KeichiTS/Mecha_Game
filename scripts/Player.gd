@@ -12,15 +12,23 @@ var acell = 0
 var timer_left
 var max_life
 
+enum {endless,story}
+var mode = story
+
+export var camera_left = -1000
+export var camera_right = 1000
+export var camera_top = -1000
+export var camera_botton = 1000
+
 
 var pre_bullet = preload("res://scenes/bullet.tscn")
 var pre_laser = preload("res://scenes/laser.tscn")
 var pre_rocket = preload("res://scenes/rocket.tscn")
 
 enum { laser , bullet, rocket }
-var left_gun = rocket
+var left_gun = laser
 var left_gun_ready = true
-var right_gun = bullet
+var right_gun = laser
 var right_gun_ready = true
 
 enum { auto_shoot, manual }
@@ -34,6 +42,9 @@ var left_muzzle
 var right_muzzle
 
 var gun_change = false
+
+
+var enemy_count = 0 
 
 func _ready():
 	life += PLAYER.life_addiction
@@ -50,8 +61,11 @@ func _ready():
 		right_mode = auto_shoot
 		
 	guns_choose()
-	
-	
+
+	$Camera.limit_left = camera_left
+	$Camera.limit_right = camera_right
+	$Camera.limit_top = camera_top
+	$Camera.limit_bottom = camera_botton
 
 
 func _process(delta):
@@ -63,6 +77,7 @@ func _process(delta):
 		shoot_right()
 		change_gun()
 
+	count_enemies()
 	die()
 	change_life()
 	
@@ -174,12 +189,12 @@ func guns_choose():
 		$timer_right.wait_time = 2
 
 func change_gun():
-	if Input.is_action_just_pressed("change_l"):
+	if Input.is_action_just_pressed("change_l") and mode == endless:
 		left_gun += 1
 		if left_gun >= 3:
 			left_gun = 0
 		gun_change = true
-	if Input.is_action_just_pressed("change_r"):
+	if Input.is_action_just_pressed("change_r") and mode == endless:
 		right_gun += 1
 		if right_gun >= 3:
 			right_gun = 0
@@ -207,6 +222,10 @@ func change_life():
 	$HUD/HP_Label.text = "HP: " + str(life)
 	$HUD/LifeBar.value = 100*life/max_life
 
+
+func count_enemies():
+	enemy_count = get_tree().get_nodes_in_group("enemy").size()
+	$HUD/Enemies.text = "Left: " + str(enemy_count)
 
 func _on_timer_left_timeout():
 	left_gun_ready = true
@@ -241,3 +260,9 @@ func _on_timer_right_timeout():
 ###################################################
 #               ~ KeichiTS - 2022 ~               #
 ###################################################
+
+
+
+
+
+
