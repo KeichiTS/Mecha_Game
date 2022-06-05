@@ -4,23 +4,28 @@ var pre_bullet = preload("res://scenes/enemy_bullet.tscn")
 var pre_laser = preload("res://scenes/enemy_laser.tscn")
 var pre_missile = preload("res://scenes/missile.tscn")
 
-var hp = 400 setget hp_change
+var hp = 600 setget hp_change
 
 enum {alive,dead}
 var status = alive
 
 func _process(delta):
+	randomize()
 	die()
 
 func anim1():
+	$sfx/laser.play()
 	$anim.play("event1")
 	yield($anim,"animation_finished")
 
 func anim2():
+	$sfx/gun.play()
 	$anim.play("event2")
 	yield($anim,"animation_finished")
+	$sfx/gun.play()
 
 func anim3():
+	$sfx/rocket.play()
 	$anim.play("event3")
 	yield($anim,"animation_finished")
 
@@ -73,6 +78,7 @@ func die():
 		PLAYER.money += 100
 		hp = 0
 		status = dead
+		$sfx/explosion.play()
 		if get_parent().has_method("dead"):
 			get_parent().dead()
 		$anim2.play("event")

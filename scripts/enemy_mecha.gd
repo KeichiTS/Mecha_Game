@@ -6,8 +6,11 @@ onready var target = get_parent().get_node("Player")
 
 enum {chasing , waiting}
 var move_status = false
-var hp = 50 setget hp_change
+var hp = 100 setget hp_change
 var initial_hp = hp
+
+enum{alive,dead}
+var status = alive 
 
 var pre_bullet = preload("res://scenes/enemy_bullet.tscn")
 var pre_laser = preload("res://scenes/enemy_laser.tscn")
@@ -59,7 +62,9 @@ func move(delta):
 
 
 func die():
-	if hp <= 0:
+	if hp <= 0 and status == alive:
+		status = dead
+		$sfx/explosion.play()
 		PLAYER.money += 10
 		$anim.play("event")
 		yield($anim,"animation_finished")
@@ -71,11 +76,14 @@ func shoot_left():
 			var ammo
 			if left_gun == 0:
 				ammo = pre_laser.instance()
+				$sfx/laser.play()
 			elif left_gun == 1:
 				ammo = pre_bullet.instance()
+				$sfx/gun.play()
 			elif left_gun == 2:
 				ammo = pre_missile.instance()
-			
+				$sfx/rocket.play()
+				
 			ammo.global_position = $muzzle_l.global_position
 			ammo.global_rotation = global_rotation
 			if left_gun != 2:

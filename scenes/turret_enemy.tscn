@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/turret_enemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/static_cannon_base.png" type="Texture" id=2]
 [ext_resource path="res://sprites/static_cannon_top.png" type="Texture" id=3]
 [ext_resource path="res://sprites/explosion-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://SFX/enemy_rocket.wav" type="AudioStream" id=5]
+[ext_resource path="res://SFX/enemy_gun.wav" type="AudioStream" id=6]
+[ext_resource path="res://SFX/enemy_laser.wav" type="AudioStream" id=7]
+[ext_resource path="res://SFX/enemy_explosion.wav" type="AudioStream" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.368
@@ -83,5 +87,23 @@ visible = false
 texture = ExtResource( 4 )
 hframes = 3
 frame = 2
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="gun" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 6 )
+bus = "Enemy"
+
+[node name="laser" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 7 )
+bus = "Enemy"
+
+[node name="rocket" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 5 )
+bus = "Enemy"
+
+[node name="explosion" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 8 )
+bus = "Enemy"
 
 [connection signal="timeout" from="timer_shoot" to="." method="_on_timer_shoot_timeout"]

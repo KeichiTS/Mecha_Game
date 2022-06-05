@@ -13,7 +13,7 @@ var timer_left
 var max_life
 
 enum {endless,story}
-var mode = story
+var mode = endless
 
 export var camera_left = -1000
 export var camera_right = 1000
@@ -49,6 +49,7 @@ var enemy_count = 0
 func _ready():
 	life += PLAYER.life_addiction
 	max_life = life
+	life -= PLAYER.life_subtraction
 	
 	if PLAYER.auto_left == false:
 		left_mode = manual
@@ -80,6 +81,7 @@ func _process(delta):
 	count_enemies()
 	die()
 	change_life()
+	change_evo()
 	
 func move(val):
 	var rot = 0 
@@ -117,10 +119,13 @@ func shoot_left():
 			var ammo
 			if left_gun == laser:
 				ammo = pre_laser.instance()
+				$sfx/laser.play()
 			elif left_gun == bullet:
 				ammo = pre_bullet.instance()
+				$sfx/gun.play()
 			elif left_gun == rocket:
 				ammo = pre_rocket.instance()
+				$sfx/rocket.play()
 			
 			ammo.global_position = left_muzzle.global_position
 			ammo.global_rotation = global_rotation
@@ -136,10 +141,13 @@ func shoot_right():
 			var ammo
 			if right_gun == laser:
 				ammo = pre_laser.instance()
+				$sfx/laser.play()
 			elif right_gun == bullet:
 				ammo = pre_bullet.instance()
+				$sfx/gun.play()
 			elif right_gun == rocket:
 				ammo = pre_rocket.instance()
+				$sfx/rocket.play()
 			
 			ammo.global_position = right_muzzle.global_position
 			ammo.global_rotation = global_rotation
@@ -210,17 +218,24 @@ func die():
 	if life <= 0:
 		life = 0 
 		if status == alive:
+			trans1()
+			$sfx/explosion.play()
 			status = dead
+			PLAYER.life_subtraction = 0
 			$dead_animation.play("event")
 			yield($dead_animation,"animation_finished")
 			get_tree().change_scene("res://scenes/Upgrade_screen.tscn")
 		
 func damage(val):
 	life -= val
+	PLAYER.life_subtraction += val
 	
 func change_life():
 	$HUD/HP_Label.text = "HP: " + str(life)
 	$HUD/LifeBar.value = 100*life/max_life
+
+func change_evo():
+	$HUD/Evo_Points.text = "EVOP: " + str(PLAYER.money)
 
 
 func count_enemies():

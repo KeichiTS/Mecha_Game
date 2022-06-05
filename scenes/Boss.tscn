@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://sprites/static_cannon_top.png" type="Texture" id=1]
 [ext_resource path="res://sprites/gun03.png" type="Texture" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://sprites/body3.png" type="Texture" id=4]
 [ext_resource path="res://scripts/Boss.gd" type="Script" id=5]
 [ext_resource path="res://sprites/explosion-Sheet.png" type="Texture" id=6]
+[ext_resource path="res://SFX/enemy_rocket.wav" type="AudioStream" id=7]
+[ext_resource path="res://SFX/enemy_gun.wav" type="AudioStream" id=8]
+[ext_resource path="res://SFX/enemy_laser.wav" type="AudioStream" id=9]
+[ext_resource path="res://SFX/boss_explosion.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 16 )
@@ -702,3 +706,21 @@ position = Vector2( 24, 8 )
 texture = ExtResource( 6 )
 hframes = 3
 frame = 2
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="gun" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 8 )
+bus = "Enemy"
+
+[node name="laser" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 9 )
+bus = "Enemy"
+
+[node name="rocket" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 7 )
+bus = "Enemy"
+
+[node name="explosion" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 10 )
+bus = "Enemy"
