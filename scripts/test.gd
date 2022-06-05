@@ -44,19 +44,28 @@ func on_robot_death():
 #### for nom permanent power up. We can move all bellow to a scene
 ### for obvious reasons, money is permanent
 var powerups = ["life","speed","evo points"]
-
+var hints = ["life for this run", "speed for this run", "evo points for future runs"]
 
 func _on_test_wave():
 	if wave_number%pw_wave == 0:
 		get_tree().paused = true
 		powerups.shuffle()
 		$PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Pw1.text = powerups[0]
+		$PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Pw1.hint_tooltip = hint(powerups[0])
 		$PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Pw2.text = powerups[1]
+		$PW/PowerUp/ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Pw2.hint_tooltip = hint(powerups[1])
 		$PW/PowerUp.popup_centered()
 	if wave_number%10 == 0 and $Timer.wait_time > 1 and wave_number > 1:
 		$Timer.wait_time*=.9
 		
-	
+func hint(pw):
+	match pw:
+		"life":
+			return hints[0]
+		"speed":
+			return hints[1]
+		"evo points":
+			return hints[2]
 
 func apply_pw(powerup):
 	match powerup:
