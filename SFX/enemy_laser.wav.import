@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/enemy_laser.wav-63535b09e7795bd24c3e997f812b5d5c.sample"
+path="res://.import/enemy_laser.wav-fb4d099d1abceb757736e4dc4b9ea825.sample"
 
 [deps]
 
-source_file="res://sfx/enemy_laser.wav"
-dest_files=[ "res://.import/enemy_laser.wav-63535b09e7795bd24c3e997f812b5d5c.sample" ]
+source_file="res://SFX/enemy_laser.wav"
+dest_files=[ "res://.import/enemy_laser.wav-fb4d099d1abceb757736e4dc4b9ea825.sample" ]
 
 [params]
 

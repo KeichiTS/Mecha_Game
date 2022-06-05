@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://PixelRPG.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://music/IntroJingle.wav" type="AudioStream" id=2]
+[ext_resource path="res://scripts/Instruction_screen.gd" type="Script" id=3]
+[ext_resource path="res://sprites/Transition_screen.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TransitionScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "event"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TransitionScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "event2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TransitionScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Plot_screen" type="Node"]
+script = ExtResource( 3 )
+
+[node name="background" type="ColorRect" parent="."]
+margin_right = 256.0
+margin_bottom = 256.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="text" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 248.0
+margin_bottom = 219.0
+custom_colors/font_color = Color( 0.521569, 0, 0.6, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Thanks for playing!
+
+A game By:
+ 
+KeichiTS
+Jaspior
+
+For Gogodot Jam 3"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/event = SubResource( 3 )
+anims/event2 = SubResource( 5 )
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="play" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 216.0
+margin_right = 148.0
+margin_bottom = 239.0
+custom_colors/font_color = Color( 0.521569, 0, 0.6, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "back"
+
+[node name="TransitionScreen" type="Sprite" parent="."]
+position = Vector2( 128, 120 )
+texture = ExtResource( 4 )
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

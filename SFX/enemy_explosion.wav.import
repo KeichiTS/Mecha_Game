@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/enemy_explosion.wav-ea8f0817f94c2d50213ee9bf3e790703.sample"
+path="res://.import/enemy_explosion.wav-79f4229ccb9c91e8d0f9aca26e2dc6db.sample"
 
 [deps]
 
-source_file="res://sfx/enemy_explosion.wav"
-dest_files=[ "res://.import/enemy_explosion.wav-ea8f0817f94c2d50213ee9bf3e790703.sample" ]
+source_file="res://SFX/enemy_explosion.wav"
+dest_files=[ "res://.import/enemy_explosion.wav-79f4229ccb9c91e8d0f9aca26e2dc6db.sample" ]
 
 [params]
 

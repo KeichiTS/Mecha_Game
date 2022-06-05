@@ -74,4 +74,4 @@ func dead():
 	status = dead 
 	$CanvasLayer/Transition/anim.play("event")
 	yield($CanvasLayer/Transition/anim,"animation_finished")
-	get_tree().change_scene("res://scenes/Lobby.tscn")
+	get_tree().change_scene("res://scenes/End.tscn")

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/enemy_rocket.wav-b1affffecdf778e917422b045049c4ad.sample"
+path="res://.import/enemy_rocket.wav-c3cc37ee25be6e9ca8c79b8edf1c1d07.sample"
 
 [deps]
 
-source_file="res://sfx/enemy_rocket.wav"
-dest_files=[ "res://.import/enemy_rocket.wav-b1affffecdf778e917422b045049c4ad.sample" ]
+source_file="res://SFX/enemy_rocket.wav"
+dest_files=[ "res://.import/enemy_rocket.wav-c3cc37ee25be6e9ca8c79b8edf1c1d07.sample" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/boss_explosion.wav-27b6c00b7006d26d5c142ae1cf2d40b9.sample"
+path="res://.import/boss_explosion.wav-378c1fd534b62707982000143d7f3ed8.sample"
 
 [deps]
 
-source_file="res://sfx/boss_explosion.wav"
-dest_files=[ "res://.import/boss_explosion.wav-27b6c00b7006d26d5c142ae1cf2d40b9.sample" ]
+source_file="res://SFX/boss_explosion.wav"
+dest_files=[ "res://.import/boss_explosion.wav-378c1fd534b62707982000143d7f3ed8.sample" ]
 
 [params]
 
