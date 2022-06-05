@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sprites/bald_workspace.png" type="Texture" id=1]
 [ext_resource path="res://sprites/bald_mechanic.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Lobby.gd" type="Script" id=3]
+[ext_resource path="res://music/Map.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/PauseOptions.tscn" type="PackedScene" id=5]
+[ext_resource path="res://theme.tres" type="Theme" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Enter"
@@ -43,18 +46,33 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 3 ),
+
+[sub_resource type="Animation" id=3]
+resource_name = "Options"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bald:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 129, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Popup")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "_open_upgrades"
+"args": [ Rect2( 0, 0, 0, 0 ) ],
+"method": "popup"
 } ]
 }
 
@@ -100,6 +118,7 @@ tracks/2/keys = {
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 6 )
 script = ExtResource( 3 )
 
 [node name="BG" type="TextureRect" parent="."]
@@ -109,15 +128,63 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 1
 
-[node name="Bald" type="TextureRect" parent="."]
+[node name="Bald" type="TextureButton" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 256.0
 margin_bottom = 240.0
-texture = ExtResource( 2 )
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
 expand = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Enter"
 anims/Enter = SubResource( 1 )
+anims/Options = SubResource( 3 )
 anims/RESET = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="PauseOptions" parent="." instance=ExtResource( 5 )]
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+margin_right = 136.0
+margin_bottom = 131.0
+popup_exclusive = true
+
+[node name="Panel" type="Panel" parent="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 21.0
+margin_top = 32.0
+margin_right = 21.0
+margin_bottom = 32.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Popup/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Panel/CenterContainer"]
+margin_left = 29.0
+margin_top = 42.0
+margin_right = 106.0
+margin_bottom = 88.0
+
+[node name="History" type="Button" parent="Popup/Panel/CenterContainer/VBoxContainer"]
+margin_right = 77.0
+margin_bottom = 21.0
+text = "History"
+
+[node name="Infinity" type="Button" parent="Popup/Panel/CenterContainer/VBoxContainer"]
+margin_top = 25.0
+margin_right = 77.0
+margin_bottom = 46.0
+text = "Infinity"
+
+[connection signal="pressed" from="Bald" to="." method="_on_Bald_pressed"]
+[connection signal="pressed" from="Popup/Panel/CenterContainer/VBoxContainer/History" to="." method="_on_History_pressed"]
+[connection signal="pressed" from="Popup/Panel/CenterContainer/VBoxContainer/Infinity" to="." method="_on_Infinity_pressed"]

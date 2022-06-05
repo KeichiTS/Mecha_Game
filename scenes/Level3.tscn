@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/enemy_mecha.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://scenes/Barrier.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Portal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/Level1.gd" type="Script" id=9]
+[ext_resource path="res://scenes/PauseOptions.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Music.tscn" type="PackedScene" id=11]
 
 [node name="Level3" type="Node"]
 script = ExtResource( 9 )
@@ -929,3 +931,7 @@ position = Vector2( -944, -954 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 888, 880 )
+
+[node name="PauseOptions" parent="." instance=ExtResource( 10 )]
+
+[node name="Music" parent="." instance=ExtResource( 11 )]

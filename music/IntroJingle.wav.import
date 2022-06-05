@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/IntroJingle.wav-b79de5db81cb659bab3e45ff148c4758.sample"
+
+[deps]
+
+source_file="res://music/IntroJingle.wav"
+dest_files=[ "res://.import/IntroJingle.wav-b79de5db81cb659bab3e45ff148c4758.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

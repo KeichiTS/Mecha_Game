@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WinJingle.wav-b815b5c6c5ccc2e32d56cb51ebe8f9c3.sample"
+
+[deps]
+
+source_file="res://music/WinJingle.wav"
+dest_files=[ "res://.import/WinJingle.wav-b815b5c6c5ccc2e32d56cb51ebe8f9c3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

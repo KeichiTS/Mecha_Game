@@ -9,6 +9,8 @@ var auto_left = false
 var auto_right = false 
 var life_addiction = 300
 
+var scene = "res://scenes/Level1.tscn"
+
 var acceleration = 1
 var max_speed = 80
 

@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 func _ready():
 	pass 
@@ -10,9 +10,9 @@ func _process(delta):
 
 func sold():
 	if PLAYER.auto_left:
-		$Auto_Left.disabled = true
+		$BG2/CenterContainer/HBoxContainer/VBoxContainer/Auto_Left.disabled = true
 	if PLAYER.auto_right:
-		$Auto_right.disabled = true
+		$BG2/CenterContainer/HBoxContainer/VBoxContainer/Auto_right.disabled = true
 	
 
 func _on_HP_pressed():
@@ -43,18 +43,18 @@ func _on_Auto_Left_pressed():
 	if PLAYER.money >= 100:
 		PLAYER.auto_left = true
 		PLAYER.money -= 100
-		$Auto_Left.disabled = true
+		$BG2/CenterContainer/HBoxContainer/VBoxContainer/Auto_Left.disabled = true
 
 func _on_Auto_right_pressed():
 	if PLAYER.money >= 100:
 		PLAYER.auto_right = true
 		PLAYER.money -= 100
-		$Auto_right.disabled = true
+		$BG2/CenterContainer/HBoxContainer/VBoxContainer/Auto_right.disabled = true
 
 
 func _on_Start_pressed():
 	#get_tree().change_scene("res://scenes/test.tscn")
-	get_tree().change_scene("res://scenes/Level1.tscn")
+	get_tree().change_scene(PLAYER.scene)
 
 func _on_Speed_pressed():
 	if PLAYER.money >= 500:

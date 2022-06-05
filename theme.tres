@@ -1,0 +1,52 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://PixelRPG.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=4]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.984314, 0.341176, 0.776471, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.670588, 0, 0.584314, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.92549, 0, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.398162, 0, 0.670588, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.521569, 0.156863, 0.380392 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 2 )
+Button/colors/font_color = Color( 0.298039, 0, 0.333333, 1 )
+Button/colors/font_color_disabled = Color( 0.0558824, 0, 0.0625, 1 )
+Button/colors/font_color_focus = Color( 0.298039, 0, 0.333333, 1 )
+Button/colors/font_color_hover = Color( 0.607843, 0, 0.678431, 1 )
+Button/colors/font_color_pressed = Color( 0.607721, 0, 0.679688, 1 )
+Button/constants/hseparation = 0
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 4 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 6 )
+Button/styles/pressed = SubResource( 7 )
+Panel/styles/panel = SubResource( 1 )

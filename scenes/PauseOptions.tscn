@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/PauseOptions.gd" type="Script" id=1]
+[ext_resource path="res://theme.tres" type="Theme" id=2]
+
+[node name="PauseOptions" type="CanvasLayer"]
+pause_mode = 2
+layer = 3
+script = ExtResource( 1 )
+
+[node name="Popup" type="Popup" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+popup_exclusive = true
+
+[node name="Panel" type="Panel" parent="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Popup/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="VBoxContainer" parent="Popup/Panel/CenterContainer"]
+margin_left = 92.0
+margin_top = 59.0
+margin_right = 163.0
+margin_bottom = 180.0
+
+[node name="Return" type="Button" parent="Popup/Panel/CenterContainer/GridContainer"]
+margin_right = 71.0
+margin_bottom = 21.0
+text = "Play"
+
+[node name="Restart" type="Button" parent="Popup/Panel/CenterContainer/GridContainer"]
+margin_top = 25.0
+margin_right = 71.0
+margin_bottom = 46.0
+text = "Restart"
+
+[node name="Lobby" type="Button" parent="Popup/Panel/CenterContainer/GridContainer"]
+margin_top = 50.0
+margin_right = 71.0
+margin_bottom = 71.0
+text = "Lobby"
+
+[node name="Quit" type="Button" parent="Popup/Panel/CenterContainer/GridContainer"]
+margin_top = 75.0
+margin_right = 71.0
+margin_bottom = 96.0
+text = "Quit"
+
+[node name="Save" type="Button" parent="Popup/Panel/CenterContainer/GridContainer"]
+margin_top = 100.0
+margin_right = 71.0
+margin_bottom = 121.0
+disabled = true
+text = "Save"
+
+[connection signal="pressed" from="Popup/Panel/CenterContainer/GridContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Popup/Panel/CenterContainer/GridContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Popup/Panel/CenterContainer/GridContainer/Lobby" to="." method="_on_Lobby_pressed"]
+[connection signal="pressed" from="Popup/Panel/CenterContainer/GridContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Popup/Panel/CenterContainer/GridContainer/Save" to="." method="_on_Save_pressed"]
