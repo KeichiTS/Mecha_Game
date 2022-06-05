@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 
 #there has to be an easier way
 onready var bg1 = preload("res://music/Mars.wav")

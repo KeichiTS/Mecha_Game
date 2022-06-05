@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/player_rocket.wav-fd0040e36c974082ba680cebbb52409c.sample"
+path="res://.import/player_rocket.wav-8170b189028dadcd73855d3639aa2c50.sample"
 
 [deps]
 
-source_file="res://SFX/player_rocket.wav"
-dest_files=[ "res://.import/player_rocket.wav-fd0040e36c974082ba680cebbb52409c.sample" ]
+source_file="res://sfx/player_rocket.wav"
+dest_files=[ "res://.import/player_rocket.wav-8170b189028dadcd73855d3639aa2c50.sample" ]
 
 [params]
 

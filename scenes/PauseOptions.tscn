@@ -24,9 +24,9 @@ anchor_bottom = 1.0
 
 [node name="GridContainer" type="VBoxContainer" parent="Popup/Panel/CenterContainer"]
 margin_left = 92.0
-margin_top = 59.0
+margin_top = 72.0
 margin_right = 163.0
-margin_bottom = 180.0
+margin_bottom = 168.0
 
 [node name="Return" type="Button" parent="Popup/Panel/CenterContainer/GridContainer"]
 margin_right = 71.0
@@ -52,6 +52,7 @@ margin_bottom = 96.0
 text = "Quit"
 
 [node name="Save" type="Button" parent="Popup/Panel/CenterContainer/GridContainer"]
+visible = false
 margin_top = 100.0
 margin_right = 71.0
 margin_bottom = 121.0

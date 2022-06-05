@@ -444,10 +444,10 @@ valign = 1
 position = Vector2( 9, 189 )
 script = ExtResource( 10 )
 radius = 42.0
-sensor_radius = 200.0
+sensor_radius = 250.0
 color = Color( 0.521569, 0, 0.623529, 0.431373 )
-Mecha_Color = Color( 5.8125, 6, 0, 0.5 )
-enemy_Color = Color( 1, 0, 0, 0.501961 )
+Mecha_Color = Color( 1, 1, 1, 0.501961 )
+enemy_Color = Color( 0.521569, 0, 0.6, 0.921569 )
 
 [node name="Timer" type="Timer" parent="HUD/Radar"]
 wait_time = 0.3
