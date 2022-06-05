@@ -60,6 +60,7 @@ func move(delta):
 
 func die():
 	if hp <= 0:
+		PLAYER.money += 10
 		$anim.play("event")
 		yield($anim,"animation_finished")
 		queue_free()

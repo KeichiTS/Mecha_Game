@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/turret_enemy.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Barrier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/HUD.png" type="Texture" id=6]
 [ext_resource path="res://scenes/enemy_mecha.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Boss.tscn" type="PackedScene" id=8]
 
 [node name="test" type="Node2D"]
 script = ExtResource( 3 )
@@ -39,6 +40,8 @@ left_gun = 1
 [node name="enemy_mecha3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 311.562, 226.389 )
 left_gun = 2
+
+[node name="Boss" parent="." instance=ExtResource( 8 )]
 
 [node name="turret_enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 247.75, -8.72184 )

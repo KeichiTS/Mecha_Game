@@ -227,6 +227,12 @@ func count_enemies():
 	enemy_count = get_tree().get_nodes_in_group("enemy").size()
 	$HUD/Enemies.text = "Left: " + str(enemy_count)
 
+func trans1():
+	$HUD/Transition.transition_1()
+
+func trans2():
+	$HUD/Transition.transition_2()
+
 func _on_timer_left_timeout():
 	left_gun_ready = true
 

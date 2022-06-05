@@ -10,7 +10,7 @@ signal wave
 
 func _ready():
 	randomize()
-	
+	$Player.trans2()
 	total_robots = wave_number
 	
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://sprites/body.png" type="Texture" id=1]
 [ext_resource path="res://sprites/gun03.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://sprites/HUD.png" type="Texture" id=8]
 [ext_resource path="res://sprites/explosion-Sheet.png" type="Texture" id=9]
 [ext_resource path="res://scripts/Radar.gd" type="Script" id=10]
+[ext_resource path="res://scenes/Transition.tscn" type="PackedScene" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -434,6 +435,8 @@ color = Color( 0.219608, 1, 0, 0 )
 autoplay = "radar_pulse"
 anims/RESET = SubResource( 11 )
 anims/radar_pulse = SubResource( 12 )
+
+[node name="Transition" parent="HUD" instance=ExtResource( 11 )]
 
 [node name="explosions" type="Node2D" parent="."]
 
